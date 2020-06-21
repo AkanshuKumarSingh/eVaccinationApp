@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "189646023495",
+    "firebase_url": "https://evaccinationapp-5468d.firebaseio.com",
+    "project_id": "evaccinationapp-5468d",
+    "storage_bucket": "evaccinationapp-5468d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189646023495:android:d260c3315dc326798cba62",
+        "android_client_info": {
+          "package_name": "com.aks.evaccinationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189646023495-r1ua1tphaceahl7oev3fkdq83kgc79mh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aks.evaccinationapp",
+            "certificate_hash": "c9c65871ffe54192b9f7c77b7ba8af58a5e38bd8"
+          }
+        },
+        {
+          "client_id": "189646023495-uajcdj37u62pgb5e94g7pt2qqhfgrutb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3s1gqVxB3_2opUiQFX6KKKGD5rYzlMUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189646023495-uajcdj37u62pgb5e94g7pt2qqhfgrutb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
