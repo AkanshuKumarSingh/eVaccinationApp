@@ -7,8 +7,14 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".ParentActivity">
+
+    <include
+        android:id="@+id/main_page_toolbar"
+        layout="@layout/app_bar_layout">
+    </include>
+
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/logoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

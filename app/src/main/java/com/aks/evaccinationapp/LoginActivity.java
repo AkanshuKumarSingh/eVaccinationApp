@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText InputPhoneNumber,InputVerificationCode;
     private Button sendVerificationCodeButton, VerifyButton;
     private ProgressDialog loadingBar;
+    private TextView signInWithEmail;
 
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
@@ -44,13 +46,21 @@ public class LoginActivity extends AppCompatActivity {
         VerifyButton = findViewById(R.id.ver_code_button);
         loadingBar = new ProgressDialog(this);
         InputVerificationCode = findViewById(R.id.InputVerificationCode);
+        signInWithEmail = findViewById(R.id.sign_in_by_email);
         mAuth = FirebaseAuth.getInstance();
+
+        signInWithEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         sendVerificationCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String phoneNumber = InputPhoneNumber.getText().toString();
+                String phoneNumber = "+91" + InputPhoneNumber.getText().toString();
 
                 if(TextUtils.isEmpty(phoneNumber)){
                     Toast.makeText(LoginActivity.this, "Please enter your phone number first...", Toast.LENGTH_SHORT).show();
@@ -103,7 +113,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onVerificationFailed(FirebaseException e) {
                 loadingBar.dismiss();
-                Toast.makeText(LoginActivity.this, "Invalid phone number please enter correct phone number with your country code...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("THISIS", "onVerificationFailed: " + e.getMessage());
 
                 sendVerificationCodeButton.setVisibility(View.VISIBLE);
                 InputPhoneNumber.setVisibility(View.VISIBLE);
