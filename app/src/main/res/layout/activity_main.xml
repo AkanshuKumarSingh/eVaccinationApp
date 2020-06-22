@@ -24,10 +24,12 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"
+        android:textColor="@android:color/white"
         android:layout_marginRight="20dp"
         android:background="@drawable/buttons"
         android:text="GET STARTED"
         android:textSize="20sp"
         />
 
-</>
+
+</RelativeLayout>
