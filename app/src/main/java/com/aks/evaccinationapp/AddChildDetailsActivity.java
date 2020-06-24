@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -25,9 +26,10 @@ import java.util.HashMap;
 
 public class AddChildDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private MaterialSpinner spinner,spinnerBlood;
+    private MaterialSpinner spinner,spinnerBlood,HospitalSpinner;
     private Button selectDateButton,saveButton;
-    private EditText childName,childAge,childHeight,childWeight,Hospital;
+    private EditText childName,childAge,childHeight,childWeight;
+    private TextView Hospital;
     private DatabaseReference ChildRef,UsersRef;
     private FirebaseAuth mAuth;
     private String currentUserId;
@@ -40,7 +42,7 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
         setContentView(R.layout.activity_add_child_details);
         mToolbar = findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Affected Countries");
+        getSupportActionBar().setTitle("Fill Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -64,6 +66,23 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
             }
         });
 
+        HospitalSpinner.setItems(
+                "Aakash Healthcare Super Speciality Hosptial, Delhi",
+                "Batra Hospital & Medical Research Centre, Delhi",
+                "Bhagwati Hospital, Delhi",
+                "Bhatia Global Hospital & Endosurgery Institute, Delhi",
+                "BLK Super Speciality Hospital, Delhi",
+                "Jeewan Hospital & Nursing Home Pvt Ltd, Delhi",
+                "Maharishi Ayurveda Hospital, Delhi"
+        );
+        HospitalSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                hospital = item.toString();
+            }
+        });
+
         selectDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +102,6 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
         name = childName.getText().toString();
         height = childHeight.getText().toString();
         weight = childWeight.getText().toString();
-        hospital = Hospital.getText().toString();
 
         if(TextUtils.isEmpty(age)){
             Toast.makeText(this, "Please fill age", Toast.LENGTH_SHORT).show();
@@ -131,6 +149,7 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
     private void InitializaAll(){
         spinner = (MaterialSpinner) findViewById(R.id.spinner);
         spinnerBlood = (MaterialSpinner) findViewById(R.id.spinnerBlood);
+        HospitalSpinner = (MaterialSpinner) findViewById(R.id.HospitalSpinner);
         selectDateButton = findViewById(R.id.selectDateButton);
         saveButton = findViewById(R.id.saveButton);
         childAge = findViewById(R.id.childAge);

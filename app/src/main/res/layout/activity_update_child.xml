@@ -1,9 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateChildActivity">
+    android:background="@color/background"
+    tools:context=".AddChildDetailsActivity"
+    android:orientation="vertical"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        android:id="@+id/main_page_toolbar_update"
+        layout="@layout/app_bar_layout"
+        ></include>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/childNameUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputs1"
+                android:hint="Child Name"
+                android:padding="6dp"
+                android:paddingStart="20dp"
+                android:textSize="20sp"
+                />
+
+            <EditText
+                android:id="@+id/childAgeUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputs1"
+                android:hint="Age in years"
+                android:padding="6dp"
+                android:paddingStart="20dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/inputs1"
+                >
+                <TextView
+                    android:id="@+id/genderO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:paddingStart="20dp"
+                    android:textSize="20sp"
+                    android:text="Gender : "
+                    />
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/spinnerUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:paddingStart="20dp"
+                    android:textSize="14sp"
+                    android:layout_marginRight="8dp"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/selectDateButtonUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select date"
+                android:background="@drawable/inputs1"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/inputs1"
+                >
+                <TextView
+                    android:id="@+id/bloodO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:paddingStart="20dp"
+                    android:textSize="20sp"
+                    android:text="Blood Grp : "
+                    />
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/spinnerBloodUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:paddingStart="20dp"
+                    android:textSize="14sp"
+                    android:layout_marginRight="8dp"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/childHeightUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputs1"
+                android:hint="Height in feets"
+                android:padding="6dp"
+                android:paddingStart="20dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                />
+
+            <EditText
+                android:id="@+id/childWeightUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputs1"
+                android:hint="Weight in kg"
+                android:padding="6dp"
+                android:paddingStart="20dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:background="@drawable/inputs1"
+                android:layout_marginTop="15dp"
+                >
+                <TextView
+                    android:id="@+id/HospitalO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Hospital : "
+                    android:padding="6dp"
+                    android:paddingStart="20dp"
+                    android:textSize="20sp"
+                    />
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/HospitalSpinnerUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:paddingStart="20dp"
+                    android:textSize="14sp"
+                    android:layout_marginRight="8dp"
+                    android:visibility="gone"
+                    />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/saveButtonUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttons"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

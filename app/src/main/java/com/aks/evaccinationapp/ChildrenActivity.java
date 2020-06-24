@@ -78,7 +78,7 @@ public class ChildrenActivity extends AppCompatActivity {
 
                     ChildRef.child(userIds).addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
                                 holder.childN.setText("Name : " + dataSnapshot.child("name").getValue().toString());
                                 holder.childA.setText("Age : " +dataSnapshot.child("age").getValue().toString());
@@ -87,7 +87,16 @@ public class ChildrenActivity extends AppCompatActivity {
                                 holder.updateBtn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        startActivity(new Intent(getApplicationContext(),));
+                                        Intent intent = new Intent(new Intent(getApplicationContext(),UpdateChildActivity.class));
+                                        intent.putExtra("name",dataSnapshot.child("name").getValue().toString());
+                                        intent.putExtra("age",dataSnapshot.child("age").getValue().toString());
+                                        intent.putExtra("gender",dataSnapshot.child("gender").getValue().toString());
+                                        intent.putExtra("bloodGrp",dataSnapshot.child("bloodGrp").getValue().toString());
+                                        intent.putExtra("date",dataSnapshot.child("date").getValue().toString());
+                                        intent.putExtra("height",dataSnapshot.child("height").getValue().toString());
+                                        intent.putExtra("weight",dataSnapshot.child("weight").getValue().toString());
+                                        intent.putExtra("hospital",dataSnapshot.child("hospital").getValue().toString());
+                                        startActivity(intent);
                                     }
                                 });
                             }
