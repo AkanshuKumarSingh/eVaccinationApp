@@ -79,7 +79,7 @@ public class ParentActivity extends AppCompatActivity {
     }
 
     private void ViewBaby() {
-
+        startActivity(new Intent(getApplicationContext(),ChildrenActivity.class));
     }
 
     private void AddBaby() {

@@ -120,7 +120,7 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
             map.put("weight",weight);
             map.put("hospital",hospital);
             ChildRef.child(childKey).setValue(map);
-            UsersRef.child(currentUserId).child(childKey).setValue("");
+            UsersRef.child(currentUserId).child(childKey).child("Saved").setValue("");
 
             startActivity(new Intent(getApplicationContext(),ParentActivity.class));
             finish();

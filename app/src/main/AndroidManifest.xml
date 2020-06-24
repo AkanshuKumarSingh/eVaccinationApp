@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aks.evaccinationapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddChildDetailsActivity"
-            android:parentActivityName=".ParentActivity"
-            ></activity>
+        <activity android:name=".UpdateChildActivity"></activity>
+        <activity
+            android:name=".ChildrenActivity"
+            android:parentActivityName=".ParentActivity" />
+        <activity
+            android:name=".AddChildDetailsActivity"
+            android:parentActivityName=".ParentActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".EmailActivity" />
         <activity android:name=".LoginActivity" />
@@ -26,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

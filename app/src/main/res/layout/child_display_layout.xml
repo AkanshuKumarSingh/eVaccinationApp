@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/inputs1"
+    android:elevation="6dp"
+    >
+    <ImageView
+        android:id="@+id/babyPic"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/baby2"
+        />
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/babyPic"
+        android:paddingStart="10dp"
+        >
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aclonica"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll1"
+        android:layout_toRightOf="@id/babyPic"
+        android:paddingStart="10dp"
+        >
+        <TextView
+            android:id="@+id/ageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textStyle="bold"
+            android:fontFamily="@font/aclonica"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/babyPic"
+        android:layout_below="@+id/ll2"
+        android:paddingStart="10dp"
+        >
+        <TextView
+            android:id="@+id/genderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/aclonica"
+            android:textColor="@android:color/black"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll3"
+        android:layout_toRightOf="@id/babyPic"
+        android:paddingStart="10dp"
+        >
+        <TextView
+            android:id="@+id/bloodTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="blood group"
+            android:textStyle="bold"
+            android:fontFamily="@font/aclonica"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll4"
+        android:layout_toRightOf="@id/babyPic"
+        android:paddingStart="10dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+            >
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Update"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@drawable/buttons"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
