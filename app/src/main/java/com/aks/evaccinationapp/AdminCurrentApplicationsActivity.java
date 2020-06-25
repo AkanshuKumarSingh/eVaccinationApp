@@ -73,6 +73,7 @@ public class AdminCurrentApplicationsActivity extends AppCompatActivity {
                 ChildRef.child(userIds).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                        Log.d("kkk", "onDataChange: ");
                         if(dataSnapshot.exists()){
 
                             holder.updateBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +89,7 @@ public class AdminCurrentApplicationsActivity extends AppCompatActivity {
                                     intent.putExtra("height",dataSnapshot.child("height").getValue().toString());
                                     intent.putExtra("weight",dataSnapshot.child("weight").getValue().toString());
                                     intent.putExtra("hospital",dataSnapshot.child("hospital").getValue().toString());
+                                    intent.putExtra("parentId",dataSnapshot.child("parentId").getValue().toString());
                                     startActivity(intent);
                                 }
                             });

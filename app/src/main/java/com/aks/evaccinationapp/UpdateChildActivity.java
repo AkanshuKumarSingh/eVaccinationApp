@@ -206,6 +206,7 @@ public class UpdateChildActivity extends AppCompatActivity implements DatePicker
             map.put("height",height);
             map.put("weight",weight);
             map.put("hospital",hospital);
+            map.put("parentId",currentUserId);
             ChildRef.child(childKey).setValue(map);
 //          UsersRef.child(currentUserId).child(childKey).child("Saved").setValue("");
 

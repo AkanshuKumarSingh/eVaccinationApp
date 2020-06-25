@@ -50,7 +50,7 @@ public class ChildrenActivity extends AppCompatActivity {
         ChildRecyclerList = findViewById(R.id.childRecyclerView);
         ChildRecyclerList.setLayoutManager(new LinearLayoutManager(this));
 
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId).child("notVaccined");
         ChildRef = FirebaseDatabase.getInstance().getReference().child("Children");
 
     }

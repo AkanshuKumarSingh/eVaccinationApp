@@ -46,8 +46,9 @@ public class ParentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
-                new Intent(getApplicationContext(),SignInPage.class);
-                finish();
+                Intent loginIntent = new Intent(ParentActivity.this, SignInPage.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(loginIntent);
             }
         });
 

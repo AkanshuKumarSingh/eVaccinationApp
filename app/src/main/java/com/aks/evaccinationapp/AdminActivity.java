@@ -51,7 +51,9 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
-                startActivity(new Intent(getApplicationContext(),SignInPage.class));
+                Intent intent = new Intent(getApplicationContext(),SignInPage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
                 finish();
             }
         });

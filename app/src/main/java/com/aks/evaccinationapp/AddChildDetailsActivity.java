@@ -103,6 +103,16 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
         height = childHeight.getText().toString();
         weight = childWeight.getText().toString();
 
+        if(gender == null){
+            gender = "Male";
+        }
+        if(bloodGrp == null){
+            bloodGrp = "A+";
+        }
+        if(hospital == null){
+            hospital = "Aakash Healthcare Super Speciality Hosptial, Delhi";
+        }
+
         if(TextUtils.isEmpty(age)){
             Toast.makeText(this, "Please fill age", Toast.LENGTH_SHORT).show();
         }
@@ -137,9 +147,9 @@ public class AddChildDetailsActivity extends AppCompatActivity implements DatePi
             map.put("height",height);
             map.put("weight",weight);
             map.put("hospital",hospital);
+            map.put("parentId",currentUserId);
             ChildRef.child(childKey).setValue(map);
             UsersRef.child(currentUserId).child("notVaccined").child(childKey).child("Saved").setValue("");
-
             startActivity(new Intent(getApplicationContext(),ParentActivity.class));
             finish();
         }

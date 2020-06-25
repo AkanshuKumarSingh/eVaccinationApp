@@ -7,6 +7,9 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -33,7 +36,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Date
     private DatabaseReference ConfirmRef,ChildRef;
     private Toolbar caToolbar;
     private String id = "";
-
+    private String parentId = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +67,30 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Date
                 moveGameRoom(ChildRef,ConfirmRef.child(id));
                 DatabaseReference del = FirebaseDatabase.getInstance().getReference().child("Children");
                 del.child(id).removeValue();
-                startActivity(new Intent(getApplicationContext(),AdminCurrentApplicationsActivity.class));
-                finish();
+                final DatabaseReference parentDel = FirebaseDatabase.getInstance().getReference().child("Users").child(parentId).child("notVaccined");
+                DatabaseReference assignRef = FirebaseDatabase.getInstance().getReference().child("Users").child(parentId).child("Assign");
+                assignRef.child(id).setValue("");
+                moveGameRoom(parentDel.child(id),assignRef.child(id));
+
+                Thread thread = new Thread() {
+                    public void run() {
+                        Looper.prepare();
+
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                parentDel.child(id).removeValue();
+                                startActivity(new Intent(getApplicationContext(),AdminCurrentApplicationsActivity.class));
+                                finish();
+                            }
+                        }, 1000);
+
+                        Looper.loop();
+                    }
+                };
+                thread.start();
+
             }
         });
 
@@ -147,6 +172,7 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Date
         caButton = findViewById(R.id.create_appointment_assign_date);
         caSaveBtn = findViewById(R.id.create_appointment_assign_saveBtn);
         try {
+            parentId = getIntent().getExtras().get("parentId").toString();
             id = getIntent().getExtras().get("Id").toString();
             caChildName.setText(getIntent().getExtras().get("name").toString());
             caChildAge.setText(getIntent().getExtras().get("age").toString());
@@ -155,8 +181,11 @@ public class CreateAppointmentActivity extends AppCompatActivity implements Date
             cachildHeight.setText(getIntent().getExtras().get("height").toString());
             caChildWeight.setText(getIntent().getExtras().get("weight").toString());
             caChildHospital.setText(getIntent().getExtras().get("hospital").toString());
-        }catch (Exception e){
 
+            Log.d("kkk", "InitializeAll: " + getIntent().getExtras().get("hospital").toString());
+
+        }catch (Exception e){
+            Log.d("kkk", "InitializeAll: " + "exception " + e.getMessage());
         }
         if(id.equals(""))
         ChildRef = FirebaseDatabase.getInstance().getReference().child("Children").child(id);
