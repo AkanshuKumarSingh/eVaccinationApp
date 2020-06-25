@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Update"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:background="@drawable/buttons"
             android:textColor="@android:color/white"

@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -29,7 +30,7 @@ public class SignInPage extends AppCompatActivity {
         adminCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sendUserToAdminSignIn();
             }
         });
         parentCardView.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,10 @@ public class SignInPage extends AppCompatActivity {
         });
     }
 
+    private void sendUserToAdminSignIn() {
+        startActivity(new Intent(getApplicationContext(),AdminSignInActivity.class));
+    }
+
     private void SendUserToLoginActivity() {
         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
     }
@@ -48,10 +53,13 @@ public class SignInPage extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currenUser = mAuth.getCurrentUser();
-
         if(currenUser == null){
             //Donothing
         }else{
+            if(currenUser.getUid().equals("Bo1rR7v0dBMQHqG6JA42vZkunJO2")){
+                startActivity(new Intent(getApplicationContext(),AdminActivity.class));
+                finish();
+            }else
             SendUserToParentActivity();
         }
     }

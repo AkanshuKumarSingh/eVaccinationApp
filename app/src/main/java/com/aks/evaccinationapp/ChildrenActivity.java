@@ -73,40 +73,54 @@ public class ChildrenActivity extends AppCompatActivity {
                 @Override
                 protected void onBindViewHolder(@NonNull final SeeChildrenViewHolder holder, int position, @NonNull Child model) {
                     Log.d("111111", "onBindViewHolder: ");
-                    String userIds = getRef(position).getKey();
+                    final String userIds = getRef(position).getKey();
                     Log.d("111110", "onBindViewHolder: " + userIds);
 
-                    ChildRef.child(userIds).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                holder.childN.setText("Name : " + dataSnapshot.child("name").getValue().toString());
-                                holder.childA.setText("Age : " +dataSnapshot.child("age").getValue().toString());
-                                holder.childG.setText("Gender : " + dataSnapshot.child("gender").getValue().toString());
-                                holder.childB.setText("BloogGrp : " + dataSnapshot.child("bloodGrp").getValue().toString());
-                                holder.updateBtn.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Intent intent = new Intent(new Intent(getApplicationContext(),UpdateChildActivity.class));
-                                        intent.putExtra("name",dataSnapshot.child("name").getValue().toString());
-                                        intent.putExtra("age",dataSnapshot.child("age").getValue().toString());
-                                        intent.putExtra("gender",dataSnapshot.child("gender").getValue().toString());
-                                        intent.putExtra("bloodGrp",dataSnapshot.child("bloodGrp").getValue().toString());
-                                        intent.putExtra("date",dataSnapshot.child("date").getValue().toString());
-                                        intent.putExtra("height",dataSnapshot.child("height").getValue().toString());
-                                        intent.putExtra("weight",dataSnapshot.child("weight").getValue().toString());
-                                        intent.putExtra("hospital",dataSnapshot.child("hospital").getValue().toString());
-                                        startActivity(intent);
+                    FirebaseDatabase.getInstance().getReference().child("Children").addValueEventListener(
+                            new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.hasChild(userIds)){
+                                        ChildRef.child(userIds).addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                                                if(dataSnapshot.exists()){
+                                                    holder.childN.setText("Name : " + dataSnapshot.child("name").getValue().toString());
+                                                    holder.childA.setText("Age : " +dataSnapshot.child("age").getValue().toString());
+                                                    holder.childG.setText("Gender : " + dataSnapshot.child("gender").getValue().toString());
+                                                    holder.childB.setText("BloogGrp : " + dataSnapshot.child("bloodGrp").getValue().toString());
+                                                    holder.updateBtn.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            Intent intent = new Intent(new Intent(getApplicationContext(),UpdateChildActivity.class));
+                                                            intent.putExtra("name",dataSnapshot.child("name").getValue().toString());
+                                                            intent.putExtra("age",dataSnapshot.child("age").getValue().toString());
+                                                            intent.putExtra("gender",dataSnapshot.child("gender").getValue().toString());
+                                                            intent.putExtra("bloodGrp",dataSnapshot.child("bloodGrp").getValue().toString());
+                                                            intent.putExtra("date",dataSnapshot.child("date").getValue().toString());
+                                                            intent.putExtra("height",dataSnapshot.child("height").getValue().toString());
+                                                            intent.putExtra("weight",dataSnapshot.child("weight").getValue().toString());
+                                                            intent.putExtra("hospital",dataSnapshot.child("hospital").getValue().toString());
+                                                            startActivity(intent);
+                                                        }
+                                                    });
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
                                     }
-                                });
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
                             }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    );
 
 
                 }
