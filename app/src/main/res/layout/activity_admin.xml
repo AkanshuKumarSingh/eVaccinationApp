@@ -11,7 +11,7 @@
     >
 
     <include
-        android:id="@+id/admin_main_page_toolbar"
+        android:id="@+id/admin_main_page_toolbar1"
         layout="@layout/app_bar_layout"
         ></include>
 

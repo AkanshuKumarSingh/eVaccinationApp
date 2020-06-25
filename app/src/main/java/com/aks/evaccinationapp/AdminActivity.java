@@ -1,6 +1,7 @@
 package com.aks.evaccinationapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
@@ -14,11 +15,17 @@ public class AdminActivity extends AppCompatActivity {
     private CardView adminGetDetail,adminGetAssigned, totalVaccinedReport;
     private Button adminLogoutBtn;
     private FirebaseAuth mAuth;
+    private Toolbar AdminToolbar1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
+        AdminToolbar1 = findViewById(R.id.admin_main_page_toolbar1);
+        setSupportActionBar(AdminToolbar1);
+        getSupportActionBar().setTitle("Admin");
+
 
         adminGetDetail = findViewById(R.id.getAllBabyDetails);
         adminGetAssigned = findViewById(R.id.showAssignedReport);
@@ -36,7 +43,7 @@ public class AdminActivity extends AppCompatActivity {
         adminGetAssigned.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getApplicationContext(),AssignedReportActivity.class));
             }
         });
 

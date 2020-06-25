@@ -11,9 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAppointmentActivity"
-            android:parentActivityName=".AdminActivity"
-            ></activity>
+        <activity android:name=".VaccineReminderActivity"></activity>
+        <activity
+            android:name=".AssignedReportActivity"
+            android:parentActivityName=".AdminActivity" />
+        <activity
+            android:name=".CreateAppointmentActivity"
+            android:parentActivityName=".AdminActivity" />
         <activity
             android:name=".AdminCurrentApplicationsActivity"
             android:parentActivityName=".AdminActivity" />

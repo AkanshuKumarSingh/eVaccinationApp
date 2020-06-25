@@ -76,7 +76,7 @@ public class ParentActivity extends AppCompatActivity {
     }
 
     private void SeeVaccineDate() {
-
+        startActivity(new Intent(getApplicationContext(),VaccineReminderActivity.class));
     }
 
     private void ViewBaby() {
