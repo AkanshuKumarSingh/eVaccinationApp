@@ -50,7 +50,7 @@ public class AdminActivity extends AppCompatActivity {
         totalVaccinedReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getApplicationContext(),totalReportActivity.class));
             }
         });
 

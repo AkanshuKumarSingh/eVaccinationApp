@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="background">#fad7d7</color>
     <color name="cardbackground">#1d65f5</color>
-</resources>
+    <color name="success">#48E91B</color>
+></resources>

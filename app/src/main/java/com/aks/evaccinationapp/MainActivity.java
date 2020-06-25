@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("HHM ", "onClick: ");
                 startActivity(new Intent(getApplicationContext(),SignInPage.class));
                 finish();
             }
