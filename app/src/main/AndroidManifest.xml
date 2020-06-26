@@ -11,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".totalReportActivity"></activity>
-        <activity android:name=".VaccineReminderActivity" />
+        <activity android:name=".totalReportActivity"
+            android:parentActivityName=".AdminActivity"
+            ></activity>
+        <activity android:name=".VaccineReminderActivity"
+            android:parentActivityName=".ParentActivity"
+            />
         <activity
             android:name=".AssignedReportActivity"
             android:parentActivityName=".AdminActivity" />
